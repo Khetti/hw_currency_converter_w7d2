@@ -8,7 +8,18 @@
   <body>
     <div id="app">
       <h1>Currency Converter</h1>
-      <input placeholder="Enter Euros" type="number" v-model.number="currencyAmount">
+      <input placeholder="Enter Amount" type="number" v-model.number="currency.amount">
+      <select id="first" v-model.number="currency.firstSelected">
+        <option v-for="(value, key) in allRates.rates" :value="value">{{ key }}</option>
+      </select>
+      <select id="second" v-model.number="currency.secondSelected">
+        <option v-for="(value, key) in allRates.rates" :value="value">{{ key }}</option>
+      </select>
+      <p>Amount: {{ currency.amount }}</p>
+      <p>Selected 1 Euro Rate: {{ currency.firstSelected }}</p>
+      <p>Euros to Selected 1: {{ selectedConversion }}</p>
+      <p>Selected 1 to Euros: {{ euroConversion }} </p>
+      <p>Selected 1 to Selected 2: {{ nonEuroConversion }}</p>
     </div>
   </body>
 </html>
